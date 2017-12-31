@@ -43,7 +43,7 @@ const firebaseAuth = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      tabsHideOnSubPages: true,
+      tabsHideOnSubPages: true,scrollAssist: false,autoFocusAssist: false
     }),
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule,

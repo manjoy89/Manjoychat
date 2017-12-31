@@ -66,6 +66,7 @@ export class ChatjoinPage {
               createroompassword: this.joinroompassword.value,
               user: this.user
             })
+            this.presentToast('Entered Chatroon Have Fun!')
           }else{
             console.log('not working');
             this.presentToast('Chatroom password Wrong!')
@@ -75,7 +76,7 @@ export class ChatjoinPage {
 
        this.base.unsubscribe();
       }else{
-        this.showalert('Chat Room not Fount','Create a new one!');
+        this.presentToast('Chat Room not Fount Create a new one!');
         
       }
       
@@ -89,14 +90,14 @@ export class ChatjoinPage {
     console.log('ionViewDidLoad ChatjoinPage');
   }
 
-  showalert(title: string, message: string){
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: message,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
+  // showalert(title: string, message: string){
+  //   let alert = this.alertCtrl.create({
+  //     title: title,
+  //     subTitle: message,
+  //     buttons: ['OK']
+  //   });
+  //   alert.present();
+  // }
 
   presentToast(message: string) {
     let toast = this.toastCtrl.create({

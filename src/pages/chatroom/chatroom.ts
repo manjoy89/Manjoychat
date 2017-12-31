@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Navbar, ViewController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Navbar, ViewController, ToastController} from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { ChatPage } from '../chat/chat';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs/Observable';
 import { database } from 'firebase/app';
 import 'rxjs/add/operator/map'
 import { HomePage} from '../home/home';
+
+
 
 
 /**
@@ -35,14 +37,15 @@ export class ChatroomPage {
   @ViewChild('createroompassword') createroompassword;
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, public alertCtrl: AlertController) {
+  constructor(public toastCtrl: ToastController,public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, public alertCtrl: AlertController) {
 
 
     this.user = this.navParams.get('user');
     
-    console.log('username',this.user)
+    console.log('username',this.user);
     //this.dataref = this.ref.list('chats').valueChanges();
-   
+
+  
   }
 
   createroombtn(){
@@ -63,12 +66,14 @@ export class ChatroomPage {
           createroompassword: this.createroompassword.value,
           user: this.user
         })
+        this.presentToast('Chatroom Created Successfully! Have Fun!');
        //here was unsubscribe
       }else{
         console.log('not working')
+        this.presentToast('Password is Mandatory for creating Chatroom!');
       }
       }else{
-        this.showalert('Chat Room Exists','Chatroom Already present! Create a New room or Join existing!');
+        this.presentToast('Chatroom Already present! Create a New room or Join existing!');
         
       }
       this.base.unsubscribe();
@@ -100,8 +105,9 @@ export class ChatroomPage {
           if (this.createroompassword.value == snapshot.val().password as string){
             console.log('working')
             refe.remove();
+            this.presentToast('Chat Room deleted Successfully');
           }else{
-            console.log('Room password wrong');
+            this.presentToast('Chat Room password wrong!');
             
           }
            
@@ -109,13 +115,11 @@ export class ChatroomPage {
 
        this.base.unsubscribe();
       }else{
-        this.showalert('Chat Room not Fount','Create a new one!');
+        this.presentToast('Chat Room not Fount! Ensure the room name or create a new one!');
         
       }
       
     });
-
-  
     
   }
 
@@ -127,16 +131,28 @@ export class ChatroomPage {
     
   }
 
-  showalert(title: string, message: string){
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: message,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
+  // showalert(title: string, message: string){
+  //   let alert = this.alertCtrl.create({
+  //     title: title,
+  //     subTitle: message,
+  //     buttons: ['OK']
+  //   });
+  //   alert.present();
+  // }
 
- 
+  presentToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
 
 }
 

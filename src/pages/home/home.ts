@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { NavController, ToastController} from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AlertController } from 'ionic-angular';
@@ -34,7 +34,7 @@ chats: Observable<any[]>;
   trimmed;
   
  
-  constructor(public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
+  constructor(public toastCtrl: ToastController,public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
    
     
   }
@@ -44,7 +44,7 @@ chats: Observable<any[]>;
   Register(){
     this.fire.auth.createUserWithEmailAndPassword(this.user.value,this.password.value)
     .then( data =>{
-     this.showalert('Registeration Successfully','Enter Chatroom and have Fun!');
+     this.presentToast('Registration Successful! Have Fun');
      console.log('check in',this.user.value)
      //console.log('username',this.username)
      this.navCtrl.push(ChatselectPage,{
@@ -52,20 +52,23 @@ chats: Observable<any[]>;
      });
     })
     .catch(error =>{
-      this.showalert('Registeration Failed','Ensure proper data');
+      console.log(error.message)
+      this.presentToast(error.message);
     })
   }
 
   Login(){
     this.fire.auth.signInWithEmailAndPassword(this.user.value,this.password.value)
     .then( data =>{
-      this.showalert('LoggedIn Successfully','Enter Chatroom and have Fun!');
+      this.presentToast('Entered Chatroom and have Fun!');
       this.navCtrl.push(ChatselectPage,{
         user: this.user.value
+        
       });
     })
     .catch (error =>{
-      this.showalert('Login Failed','Ensure That You have registered');
+      console.log(error)
+      this.presentToast(error.message);
     })
    
   }
@@ -82,17 +85,30 @@ chats: Observable<any[]>;
       
   
 
-  showalert(title: string, message: string){
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: message,
-      buttons: ['OK']
+  // showalert(title: string, message: string){
+  //   let alert = this.alertCtrl.create({
+  //     title: title,
+  //     subTitle: message,
+  //     buttons: ['OK']
+  //   });
+  //   alert.present();
+  // }
+
+  presentToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
     });
-    alert.present();
-  }
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
 
 }
 
-
+}
 
 
