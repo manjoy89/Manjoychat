@@ -1,0 +1,8 @@
+{
+  "name": "ManjoyChat",
+  "app_id": "59b61d07",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

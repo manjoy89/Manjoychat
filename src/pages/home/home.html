@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>
+      Arbour Chatroom
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    
+      <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" #user></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" #password></ion-input>
+        </ion-item>
+        <br>
+        <br>
+    <div class="logbtn">
+      <div class="btn1" align="center">
+        <button class="regbut" ion-button outline (click)="Register()">Register</button>
+      </div>
+      <div class="btn2" align="center">
+        <button class="logbut" ion-button outline (click)="Login()">Login</button>
+      </div>
+    </div>
+
+    <button class="passreset" ion-button outline (click)="passwordreset()">Reset</button>
+ 
+</ion-content>

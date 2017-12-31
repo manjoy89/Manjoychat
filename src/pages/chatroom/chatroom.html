@@ -1,0 +1,32 @@
+<!--
+  Generated template for the ChatroomPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Create Room</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label floating>Create Chatroon</ion-label>
+        <ion-input type="text" #createroom></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Room Password</ion-label>
+          <ion-input type="password" #createroompassword></ion-input>
+      </ion-item>
+      <button ion-button block (click)="createroombtn()">Create Room</button>
+      <button ion-button block (click)="deleteroombtn()">Delete Room</button>
+
+</ion-content>
