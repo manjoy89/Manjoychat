@@ -31,12 +31,14 @@ chats: Observable<any[]>;
   @ViewChild('user') user;
   @ViewChild('password') password;
   provider;
+  trimmed;
   
  
   constructor(public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
    
     
   }
+
 
   
   Register(){

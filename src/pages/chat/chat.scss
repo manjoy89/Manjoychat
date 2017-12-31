@@ -2,9 +2,9 @@ page-chat {
     .inner{
         display: inline-block;
         padding: 5px 10px;
-        background: color($colors,'primary');
+        background: color($colors,'light');
         margin: 5px;
-        color: white;
+        color: black;
         border-radius: 3px;
         
     }
@@ -49,8 +49,8 @@ page-chat {
    }
 
    .inner.messageRight{
-       background-color: color($colors,'secondary');
-       
+       background-color: color($colors,'dark');
+       color: white;
    }
 
    .chat.status .inner:before{
@@ -78,7 +78,7 @@ page-chat {
    .chat.status .inner .message{
        background: white;
        display: inline-block;
-       padding: 0 10px;
+       padding: 0 20px;
    }
 
    div#footer div.elem:first-child{
@@ -96,6 +96,12 @@ page-chat {
         margin: 0;
         position: relative;
 
+    }
+
+    ion-content{
+        background: linear-gradient(to bottom, #007991, #78ffd6);
+        //background: linear-gradient(to bottom, #bc4e9c, #f80759);
+        //background: linear-gradient(to bottom, #f857a6, #ff5858);
     }
 
    

@@ -142,7 +142,7 @@ toast;
       password: this.createroompassword
       //timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
-      this.presentToast(this.user)
+      
       this.scrollToBottom();
       console.log('view load','chats page')
       
