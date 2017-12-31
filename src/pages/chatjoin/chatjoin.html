@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-    <ion-navbar>
+    <ion-navbar color="mycolor">
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
           </button>
@@ -19,14 +19,19 @@
   <ion-content padding>
   
       <ion-item>
-          <ion-label floating>Join Chatroon</ion-label>
-          <ion-input type="text" #joinroom></ion-input>
+          <ion-label floating style="color:#ffffff">Join Chatroom</ion-label>
+          <ion-input type="text" #joinroom style="color:#ffffff"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>Room Password</ion-label>
-            <ion-input type="password" #joinroompassword></ion-input>
+            <ion-label floating style="color:#ffffff">Room Password</ion-label>
+            <ion-input type="password" #joinroompassword style="color:#ffffff"></ion-input>
         </ion-item>
-        <button ion-button block (click)="joinroombtn()">Join Room</button>
-  
+        <br>
+        <br>
+        <div class="join" align="center">
+        <div class="btn1">
+        <button class="joinbtn" ion-button outline color="light"  (click)="joinroombtn()">Join Room</button>
+        </div>    
+        </div>
   </ion-content>
   

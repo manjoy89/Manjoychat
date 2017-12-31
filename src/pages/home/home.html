@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="mycolor">
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
@@ -10,26 +10,28 @@
 </ion-header>
 
 <ion-content padding>
+      <br>
+      <h1 class="login">Login Please!</h1>
     
       <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input type="text" #user></ion-input>
+          <ion-label floating style="color:#ffffff">Username</ion-label>
+          <ion-input type="text" #user style="color:#ffffff"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" #password></ion-input>
+          <ion-label floating style="color:#ffffff">Password</ion-label>
+          <ion-input type="password" #password style="color:#ffffff"></ion-input>
         </ion-item>
         <br>
         <br>
     <div class="logbtn">
       <div class="btn1" align="center">
-        <button class="regbut" ion-button outline (click)="Register()">Register</button>
+        <button class="regbut" ion-button outline color="light" (click)="Register()">Register</button>
       </div>
       <div class="btn2" align="center">
-        <button class="logbut" ion-button outline (click)="Login()">Login</button>
+        <button class="logbut" ion-button outline color="light" (click)="Login()">Login</button>
       </div>
     </div>
-
-    <button class="passreset" ion-button outline (click)="passwordreset()">Reset</button>
- 
+    <div align="center">
+    <button class="reset" ion-button clear color="light" (click)="passwordreset()">Forgot Password?</button>
+    </div>  
 </ion-content>

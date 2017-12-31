@@ -4,4 +4,33 @@ page-chatroom {
 
         font-size: 1.7em;
     }
+
+    ion-content{
+        background: linear-gradient(to bottom, #007991, #78ffd6);
+        //background: linear-gradient(to bottom, #bc4e9c, #f80759);
+        //background: linear-gradient(to bottom, #f857a6, #ff5858);
+    }
+
+    .createbtn{
+        width: 180px
+    }
+    .deletebtn{
+        width: 180px
+    }
+
+    .createroom{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .btn1{
+        flex: 1;
+    }
+
+    .btn2{
+        flex: 2;
+    }
+    .item.item-input {
+        background-color: transparent;
+    }
 }

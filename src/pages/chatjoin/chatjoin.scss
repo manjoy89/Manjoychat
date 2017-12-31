@@ -1,3 +1,23 @@
 page-chatjoin {
+    ion-content{
+        background: linear-gradient(to bottom, #007991, #78ffd6);
+        //background: linear-gradient(to bottom, #bc4e9c, #f80759);
+        //background: linear-gradient(to bottom, #f857a6, #ff5858);
+    }
 
+    .join{
+        display: flex;
+        flex-direction: row;
+    }
+    .btn1{
+        flex:  1;
+    }
+
+    .joinbtn{
+        width: 350px;
+    }
+
+    .item.item-input {
+        background-color: transparent;
+    }
 }
