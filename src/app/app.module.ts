@@ -24,6 +24,7 @@ import { ChatjoinPage } from '../pages/chatjoin/chatjoin'
 //import { Keyboard } from 'ionic-angular/platform/keyboard';
 import { Keyboard } from '@ionic-native/keyboard';
 import { IntroPage } from '../pages/intro/intro'
+import { Vibration } from '@ionic-native/vibration';
 
 const firebaseAuth = {
   apiKey: "AIzaSyCC3DoeFX6xJCzDZS36k_5iiPVBFYm_oHM",
@@ -70,6 +71,7 @@ const firebaseAuth = {
     SplashScreen,
     Facebook,
     Keyboard,
+    Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

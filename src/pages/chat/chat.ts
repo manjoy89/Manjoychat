@@ -133,6 +133,7 @@ toast;
   this.keyboard.show();
   this.scrollToBottom()
   
+  
   }
 
   ionViewDidLoad() {
@@ -182,6 +183,10 @@ presentToast(message: string) {
   });
 
   toast.present();
+}
+
+preventFocusChange(e) {
+  e.preventDefault();
 }
 
 }

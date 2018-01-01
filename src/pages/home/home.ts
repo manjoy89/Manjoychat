@@ -17,6 +17,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook'
 import { FirebaseAuth } from 'firebase/auth'
 import { Storage } from '@ionic/storage';
 import { IntroPage } from '../intro/intro';
+import { Vibration } from '@ionic-native/vibration';
 
 
 
@@ -36,12 +37,10 @@ chats: Observable<any[]>;
   trimmed;
   
  
-  constructor(public storage: Storage,public toastCtrl: ToastController,public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
+  constructor(public vibration: Vibration,public storage: Storage,public toastCtrl: ToastController,public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
    
     
   }
-
-
   
   Register(){
     this.fire.auth.createUserWithEmailAndPassword(this.user.value,this.password.value)
@@ -56,6 +55,7 @@ chats: Observable<any[]>;
     .catch(error =>{
       console.log(error.message)
       this.presentToast(error.message);
+      this.vibration.vibrate(300);
     })
   }
 
@@ -71,6 +71,7 @@ chats: Observable<any[]>;
     .catch (error =>{
       console.log(error)
       this.presentToast(error.message);
+      this.vibration.vibrate(300);
     })
    
   }
@@ -112,12 +113,13 @@ chats: Observable<any[]>;
 }
 
 ionViewDidLoad() {
-  // this.storage.get('intro-done').then(done => {
-  //   if (!done) {
-  //     this.storage.set('intro-done', true);
+  
+  this.storage.get('intro-done').then(done => {
+    if (!done) {
+    //  this.storage.set('intro-done', true);
       this.navCtrl.setRoot(IntroPage);
-  //   }
-  // });
+    }
+  });
 }
 
 }

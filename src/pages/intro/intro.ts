@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the IntroPage page.
@@ -16,7 +17,8 @@ import { HomePage } from '../home/home';
 })
 export class IntroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public storage: Storage,public navCtrl: NavController, public navParams: NavParams) {
+   
   }
 
   navHome() {
@@ -26,6 +28,9 @@ export class IntroPage {
   datachanged(e:any){
     console.log(e);
     console.log(e.checked);
+    if(e) {
+      this.storage.set('intro-done', true);
+    }
 }
 
   ionViewDidLoad() {
