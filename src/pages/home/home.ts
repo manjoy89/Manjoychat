@@ -15,6 +15,8 @@ import { ChatroomPage } from '../chatroom/chatroom';
 import { ChatselectPage } from '../chatselect/chatselect';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook'
 import { FirebaseAuth } from 'firebase/auth'
+import { Storage } from '@ionic/storage';
+import { IntroPage } from '../intro/intro';
 
 
 
@@ -34,7 +36,7 @@ chats: Observable<any[]>;
   trimmed;
   
  
-  constructor(public toastCtrl: ToastController,public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
+  constructor(public storage: Storage,public toastCtrl: ToastController,public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
    
     
   }
@@ -60,7 +62,7 @@ chats: Observable<any[]>;
   Login(){
     this.fire.auth.signInWithEmailAndPassword(this.user.value,this.password.value)
     .then( data =>{
-      this.presentToast('Entered Chatroom and have Fun!');
+      this.presentToast('Login Successful! Have Fun!');
       this.navCtrl.push(ChatselectPage,{
         user: this.user.value
         
@@ -107,6 +109,15 @@ chats: Observable<any[]>;
   
     toast.present();
 
+}
+
+ionViewDidLoad() {
+  // this.storage.get('intro-done').then(done => {
+  //   if (!done) {
+  //     this.storage.set('intro-done', true);
+      this.navCtrl.setRoot(IntroPage);
+  //   }
+  // });
 }
 
 }

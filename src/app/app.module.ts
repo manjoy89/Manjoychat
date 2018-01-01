@@ -12,6 +12,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import firebase from 'firebase';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -21,6 +23,7 @@ import { ChatselectPage } from '../pages/chatselect/chatselect'
 import { ChatjoinPage } from '../pages/chatjoin/chatjoin'
 //import { Keyboard } from 'ionic-angular/platform/keyboard';
 import { Keyboard } from '@ionic-native/keyboard';
+import { IntroPage } from '../pages/intro/intro'
 
 const firebaseAuth = {
   apiKey: "AIzaSyCC3DoeFX6xJCzDZS36k_5iiPVBFYm_oHM",
@@ -38,17 +41,19 @@ const firebaseAuth = {
     ChatPage,
     ChatroomPage,
     ChatselectPage,
-    ChatjoinPage
+    ChatjoinPage,
+    IntroPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      tabsHideOnSubPages: true,scrollAssist: false,autoFocusAssist: false
+      tabsHideOnSubPages: true
     }),
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +62,8 @@ const firebaseAuth = {
     ChatPage,
     ChatroomPage,
     ChatselectPage,
-    ChatjoinPage
+    ChatjoinPage,
+    IntroPage
   ],
   providers: [
     StatusBar,
