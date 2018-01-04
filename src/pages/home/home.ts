@@ -34,16 +34,17 @@ chats: Observable<any[]>;
   @ViewChild('user') user;
   @ViewChild('password') password;
   provider;
+  sample;
   trimmed;
   
  
   constructor(public vibration: Vibration,public storage: Storage,public toastCtrl: ToastController,public facebook: Facebook, public alertCtrl: AlertController, private fire: AngularFireAuth, public navCtrl: NavController, public ref: AngularFireDatabase) {
    
-    
+
   }
   
   Register(){
-    this.fire.auth.createUserWithEmailAndPassword(this.user.value,this.password.value)
+    this.fire.auth.createUserWithEmailAndPassword(this.user.value.trim(),this.password.value)
     .then( data =>{
      this.presentToast('Registration Successful! Have Fun');
      console.log('check in',this.user.value)
@@ -60,7 +61,7 @@ chats: Observable<any[]>;
   }
 
   Login(){
-    this.fire.auth.signInWithEmailAndPassword(this.user.value,this.password.value)
+    this.fire.auth.signInWithEmailAndPassword(this.user.value.trim(),this.password.value)
     .then( data =>{
       this.presentToast('Login Successful! Have Fun!');
       this.navCtrl.push(ChatselectPage,{

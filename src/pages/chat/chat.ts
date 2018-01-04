@@ -13,6 +13,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ChatroomPage } from '../chatroom/chatroom';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { ActionSheetController } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
 /**
  * Generated class for the ChatPage page.
  *
@@ -40,7 +43,7 @@ mailuser;
 chatroom;
 roomname;
 createroompassword;
-
+info: any;
 user: string;
 
 message: string ='';
@@ -52,9 +55,10 @@ inianswer: String;
 answer: String;
 toast;
 
-  constructor(public toastCtrl: ToastController,public keyboard: Keyboard,public ngZone: NgZone,public platform: Platform,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public socialsharing: SocialSharing,public actionSheetCtrl: ActionSheetController,public nativeAudio: NativeAudio,public toastCtrl: ToastController,public keyboard: Keyboard,public ngZone: NgZone,public platform: Platform,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {
     
-    
+
+    this.nativeAudio.preloadSimple('uniqueId1','assets/sounds/FacebookPop.mp3')
       //this.user = this.navParams.get('user');
       //this.chatscol = this.db.collection('chats')
       this.mail = this.navParams.get('user');
@@ -74,6 +78,7 @@ toast;
 
     this.chats = db.list(this.chatroom).valueChanges();
 
+    
     platform.ready().then(() => {
 
       ApiAIPromises.init({
@@ -92,10 +97,16 @@ toast;
          this.inianswer = speech;
        });
     })
-    
+
   }  
   
+  
+  
+
+    
   sendmess(){
+
+    
     
     if (this.message.length==0){
       this.message = 'Just bored to type!'
@@ -132,11 +143,12 @@ toast;
   this.message='';
   this.keyboard.show();
   this.scrollToBottom()
-  
+  this.nativeAudio.play('uniqueId1')
   
   }
 
   ionViewDidLoad() {
+    this.content.scrollToBottom(0);
     this.db.list(this.chatroom).push({
       status: true,
       message: `${this.user} has Joined the chatroom`,
@@ -144,7 +156,6 @@ toast;
       //timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
       
-      this.scrollToBottom();
       console.log('view load','chats page')
       
       
@@ -161,7 +172,7 @@ toast;
 
   onViewWillEnter(): void {
     
-    this.scrollToBottom();
+    this.content.scrollToBottom(0)
 }
 
 scrollToBottom() {
@@ -187,6 +198,18 @@ presentToast(message: string) {
 
 preventFocusChange(e) {
   e.preventDefault();
+}
+
+
+Invite() {
+  
+  this.socialsharing.shareWithOptions({
+    message: `Hey Buddy! Please join our chatrrom ${this.chatroom} with Passcode - ${this.createroompassword}. Have Fun!`
+  }).then(() => {
+    console.log('Shared!');
+  }).catch((err) => {
+    console.log('Oops, something went wrong:', err);
+  });
 }
 
 }

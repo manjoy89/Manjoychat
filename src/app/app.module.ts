@@ -25,6 +25,8 @@ import { ChatjoinPage } from '../pages/chatjoin/chatjoin'
 import { Keyboard } from '@ionic-native/keyboard';
 import { IntroPage } from '../pages/intro/intro'
 import { Vibration } from '@ionic-native/vibration';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 const firebaseAuth = {
   apiKey: "AIzaSyCC3DoeFX6xJCzDZS36k_5iiPVBFYm_oHM",
@@ -72,6 +74,8 @@ const firebaseAuth = {
     Facebook,
     Keyboard,
     Vibration,
+    NativeAudio,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
