@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { ChatroomPage } from '../chatroom/chatroom'
 import { ChatjoinPage } from '../chatjoin/chatjoin'
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 
 /**
@@ -24,7 +25,7 @@ export class ChatselectPage {
   chatroomParams;
   chatjoinParams;
 
-  constructor(public keyboard: Keyboard,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.user = this.navParams.get('user');
     this.chatroomParams={

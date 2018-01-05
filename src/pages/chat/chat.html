@@ -20,11 +20,12 @@
 
 <div id="Chatmessages">
 
-  <div [class]="chat.status ? 'chat status' : 'chat'" *ngFor="let chat of chats | async">
+  <div [class]="chat.status ? 'chat status' : 'chat'" *ngFor="let last = last;let chat of chats | async">
     <div [class]="chat.user==user ? 'inner messageRight' : 'inner messageLeft'">
       <div class="username">{{chat.user}}</div>
       <div class="message">{{chat.message}}</div>
       <div class="time">{{chat.time}}</div>
+      {{last ? callFunction() : ''}}
     </div>
     <br>
   </div>

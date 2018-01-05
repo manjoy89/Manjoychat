@@ -28,6 +28,9 @@ import { IntroPage } from '../pages/intro/intro'
 import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { SuperTabsModule } from 'ionic2-super-tabs';
+
+
 
 const firebaseAuth = {
   apiKey: "AIzaSyCC3DoeFX6xJCzDZS36k_5iiPVBFYm_oHM",
@@ -58,7 +61,8 @@ const firebaseAuth = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

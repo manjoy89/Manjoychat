@@ -98,6 +98,12 @@ toast;
        });
     })
 
+    setTimeout(() => {
+      for (let i = 0; i < 100; i++) {
+        this.chats[i] = i
+      }
+    }, 300)
+
   }  
   
   
@@ -210,6 +216,10 @@ Invite() {
   }).catch((err) => {
     console.log('Oops, something went wrong:', err);
   });
+
+}
+callFunction(){
+  this.content.scrollToBottom(0)
 }
 
 }
