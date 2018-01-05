@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { ChatroomPage } from '../chatroom/chatroom'
 import { ChatjoinPage } from '../chatjoin/chatjoin'
 
+
 /**
  * Generated class for the ChatselectPage page.
  *
@@ -16,14 +17,14 @@ import { ChatjoinPage } from '../chatjoin/chatjoin'
   templateUrl: 'chatselect.html',
 })
 export class ChatselectPage {
-  
+  valueforngif=true;
   user: string;
   chatroomPage = ChatroomPage;
   chatjoinPage = ChatjoinPage;
   chatroomParams;
   chatjoinParams;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public keyboard: Keyboard,public navCtrl: NavController, public navParams: NavParams) {
 
     this.user = this.navParams.get('user');
     this.chatroomParams={
@@ -38,5 +39,7 @@ export class ChatselectPage {
     console.log('ionViewDidLoad ChatselectPage');
     
   }
+
+ 
 
 }

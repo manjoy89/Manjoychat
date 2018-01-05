@@ -10,6 +10,7 @@ import { ChatPage } from '../pages/chat/chat';
 import { ChatroomPage} from '../pages/chatroom/chatroom'
 import { ChatjoinPage} from '../pages/chatjoin/chatjoin'
 import { ChatselectPage} from '../pages/chatselect/chatselect'
+import { AffiliatePage } from '../pages/affiliate/affiliate';
 @Component({
   templateUrl: 'app.html',
   providers: [Keyboard]
@@ -30,8 +31,8 @@ pages: Array<{title: string, component: any}>;
     });
 
     this.pages = [
-      { title: 'Home', component: HomePage }
-    //  { title: 'Create Room', component: ChatroomPage },
+      { title: 'Home', component: HomePage },
+      { title: 'Affiliate', component: AffiliatePage }
     //  { title: 'Join Room', component: ChatjoinPage }
     ];
   }

@@ -21,6 +21,7 @@ import { ChatPage } from '../pages/chat/chat'
 import { ChatroomPage } from '../pages/chatroom/chatroom'
 import { ChatselectPage } from '../pages/chatselect/chatselect'
 import { ChatjoinPage } from '../pages/chatjoin/chatjoin'
+import { AffiliatePage } from '../pages/affiliate/affiliate'
 //import { Keyboard } from 'ionic-angular/platform/keyboard';
 import { Keyboard } from '@ionic-native/keyboard';
 import { IntroPage } from '../pages/intro/intro'
@@ -45,7 +46,8 @@ const firebaseAuth = {
     ChatroomPage,
     ChatselectPage,
     ChatjoinPage,
-    IntroPage
+    IntroPage,
+    AffiliatePage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ const firebaseAuth = {
     ChatroomPage,
     ChatselectPage,
     ChatjoinPage,
-    IntroPage
+    IntroPage,
+    AffiliatePage
   ],
   providers: [
     StatusBar,
