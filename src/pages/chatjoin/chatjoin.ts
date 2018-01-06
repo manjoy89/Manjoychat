@@ -43,8 +43,8 @@ export class ChatjoinPage {
 
   joinroombtn(){
 
-
-    this.base=this.db.list(this.joinroom.value).valueChanges();
+    if(this.joinroom.value !=''){
+    this.base=this.db.list(this.joinroom.value.trim()).valueChanges();
     
     this.base.subscribe(res=>{
       this.datalen=res.length
@@ -55,14 +55,14 @@ export class ChatjoinPage {
       if (this.datalen!==0){
         console.log('into if')
        
-        var refe = firebase.database().ref(`/${this.joinroom.value}`);
+        var refe = firebase.database().ref(`/${this.joinroom.value.trim()}`);
         refe.orderByChild("password").limitToFirst(1).on("child_added", snapshot => {
           console.log('into snapshot')
           console.log(snapshot.val().password as string)
           if (this.joinroompassword.value == snapshot.val().password as string){
             console.log('working')
             this.navCtrl.push(ChatPage,{
-              createroom: this.joinroom.value,
+              createroom: this.joinroom.value.trim(),
               createroompassword: this.joinroompassword.value,
               user: this.user
             })
@@ -82,7 +82,9 @@ export class ChatjoinPage {
       
     });
 
-  
+  }else{
+    this.presentToast('Join room name cant be blanl!');
+  }
     
   }
 
@@ -111,6 +113,12 @@ export class ChatjoinPage {
     });
   
     toast.present();
+  }
+
+  eventHandler(keyCode){
+    if(keyCode==13){
+    this.joinroombtn();
+    }
   }
 }
  

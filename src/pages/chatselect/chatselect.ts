@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { ChatroomPage } from '../chatroom/chatroom'
 import { ChatjoinPage } from '../chatjoin/chatjoin'
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { ChatroomdeletePage } from '../chatroomdelete/chatroomdelete';
 
 
 /**
@@ -22,8 +23,10 @@ export class ChatselectPage {
   user: string;
   chatroomPage = ChatroomPage;
   chatjoinPage = ChatjoinPage;
+  chatroomdeletePage = ChatroomdeletePage;
   chatroomParams;
   chatjoinParams;
+  chatroomdeleteParams;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
@@ -32,6 +35,9 @@ export class ChatselectPage {
       user: this.user
     }
     this.chatjoinParams={
+      user: this.user
+    }
+    this.chatroomdeleteParams={
       user: this.user
     }
   }

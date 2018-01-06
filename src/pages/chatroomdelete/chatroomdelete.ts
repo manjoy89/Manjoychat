@@ -22,20 +22,20 @@ import { HomePage} from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-chatroom',
-  templateUrl: 'chatroom.html',
+  selector: 'page-chatroomdelete',
+  templateUrl: 'chatroomdelete.html',
 })
-export class ChatroomPage {
+export class ChatroomdeletePage {
 
  
-  base;
+ 
   basedel;
-  dataref: Observable<any[]>;
+  //dataref: Observable<any[]>;
   //dataref: any;
   user: string;
   datalen: Number;
-  @ViewChild('createroom') createroom;
-  @ViewChild('createroompassword') createroompassword;
+  @ViewChild('deleteroom') deleteroom;
+  @ViewChild('deleteroompassword') deleteroompassword;
 
   
   constructor(public toastCtrl: ToastController,public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, public alertCtrl: AlertController) {
@@ -49,50 +49,50 @@ export class ChatroomPage {
   
   }
 
-  
-  createroombtn(){
+  deleteroombtn(){
 
-    if(this.createroom.value !=''){
-
-    this.base=this.db.list(this.createroom.value.trim()).valueChanges();
-
+    if(this.deleteroom.value !=''){
+    this.basedel=this.db.list(this.deleteroom.value.trim()).valueChanges();
     
-    
-    this.base.subscribe(res=>{
-      this.datalen=res.length
-      console.log('datalen',this.datalen)
+    this.basedel.subscribe(data=>{
+      this.datalen=data.length
 
-      console.log('before if')
-      console.log(this.datalen)
-      if (this.datalen==0){
+      if (this.datalen!==0){
+       
+        var refedel = firebase.database().ref(`/${this.deleteroom.value.trim()}`);
+        refedel.orderByChild("password").limitToFirst(1).on("child_added", snapshot => {
+          console.log('snapshot',snapshot)
+          if (this.deleteroompassword.value == snapshot.val().password as string){
 
-        if(this.createroompassword.value !='' && this.createroom.value !=''){
-          this.navCtrl.push(ChatPage,{
-          createroom: this.createroom.value.trim(),
-          createroompassword: this.createroompassword.value,
-          user: this.user
-        })
-        this.presentToast('Chatroom Created Successfully! Have Fun!');
-       //here was unsubscribe
+            refedel.remove();
+            this.presentToast('Chat Room deleted Successfully');
+            console.log('deleted')
+            refedel.off();
+          }else{
+            this.presentToast('Chat Room password wrong!');
+            refedel.off();
+            
+          }
+          
+          
+         });
+
       }else{
-        console.log('not working')
-        this.presentToast('Ensure proper Chatroom Name and Password!');
+        this.presentToast('Chat Room not Fount! Ensure the room name or create a new one!');
+       
       }
-      }else{
-        this.presentToast('Chatroom Already present! Create a New room or Join existing!');
-        
-      }
-      this.base.unsubscribe();
+      this.basedel.unsubscribe();
     });
 
   }else{
-    this.presentToast('Chatroom Name cant be Blank');
+    this.presentToast('Room name cant be empty!');
   }
   
   }
 
+
   ionViewDidLoad() {
-  
+  console.log('into roomdelete page')
   }
 
   ionViewWillLeave(){
@@ -108,8 +108,10 @@ export class ChatroomPage {
   
     toast.present();
   }
-
- 
-
+  eventHandler(keyCode){
+    if(keyCode==13){
+    this.deleteroombtn();
+    }
+  }
 }
 

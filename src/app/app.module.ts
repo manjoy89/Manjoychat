@@ -22,6 +22,7 @@ import { ChatroomPage } from '../pages/chatroom/chatroom'
 import { ChatselectPage } from '../pages/chatselect/chatselect'
 import { ChatjoinPage } from '../pages/chatjoin/chatjoin'
 import { AffiliatePage } from '../pages/affiliate/affiliate'
+import { ChatroomdeletePage } from '../pages/chatroomdelete/chatroomdelete'
 //import { Keyboard } from 'ionic-angular/platform/keyboard';
 import { Keyboard } from '@ionic-native/keyboard';
 import { IntroPage } from '../pages/intro/intro'
@@ -29,6 +30,7 @@ import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { Push } from '@ionic-native/push'
 
 
 
@@ -50,7 +52,8 @@ const firebaseAuth = {
     ChatselectPage,
     ChatjoinPage,
     IntroPage,
-    AffiliatePage
+    AffiliatePage,
+    ChatroomdeletePage
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ const firebaseAuth = {
     ChatselectPage,
     ChatjoinPage,
     IntroPage,
-    AffiliatePage
+    AffiliatePage,
+    ChatroomdeletePage
   ],
   providers: [
     StatusBar,
@@ -83,6 +87,7 @@ const firebaseAuth = {
     Vibration,
     NativeAudio,
     SocialSharing,
+    Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

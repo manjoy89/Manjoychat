@@ -10,7 +10,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
           </button>
-      <ion-title>Join Room</ion-title>
+      <ion-title>Delete Room</ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -19,18 +19,18 @@
   <ion-content padding>
   
       <ion-item>
-          <ion-label floating style="color:#ffffff">Join Chatroom</ion-label>
-          <ion-input type="text" #joinroom style="color:#ffffff"  autocapitalize="none"></ion-input>
+          <ion-label floating style="color:#ffffff">Delete Chatroom</ion-label>
+          <ion-input type="text" #deleteroom style="color:#ffffff"  autocapitalize="none"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating style="color:#ffffff">Room Password</ion-label>
-            <ion-input type="password" #joinroompassword style="color:#ffffff"></ion-input>
+            <ion-input type="password" #deleteroompassword style="color:#ffffff"></ion-input>
         </ion-item>
         <br>
         <br>
         <div class="join" align="center">
         <div class="btn1">
-        <button class="joinbtn" ion-button outline color="light"  (click)="joinroombtn()" (keypress)="eventHandler($event.keyCode)">Join Room</button>
+        <button class="joinbtn" ion-button outline color="light"  (click)="deleteroombtn()" (keypress)="eventHandler($event.keyCode)">Delete Room</button>
         </div>    
         </div>
   </ion-content>

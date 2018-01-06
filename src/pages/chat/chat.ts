@@ -38,7 +38,7 @@ export class ChatPage {
  
 
 mail: string;
-
+scrollbottom: boolean = true;
 mailuser;
 chatroom;
 roomname;
@@ -75,6 +75,7 @@ toast;
 
       console.log('user',this.user)
       console.log('roomname',this.roomname)
+      this.scrollTo();
 
     this.chats = db.list(this.chatroom).valueChanges();
 
@@ -98,15 +99,23 @@ toast;
        });
     })
 
+   
+
     setTimeout(() => {
       for (let i = 0; i < 100; i++) {
         this.chats[i] = i
       }
-    }, 300)
+    })
+    
+
+    this.chats.subscribe((data)=>{
+     
+      if(this.scrollbottom == true){
+      this.scrollTochat();
+      }
+    })
 
   }  
-  
-  
   
 
     
@@ -147,8 +156,8 @@ toast;
       }
       
   this.message='';
-  this.keyboard.show();
-  this.scrollToBottom()
+ // this.keyboard.show();
+ // this.scrollTochat();
   this.nativeAudio.play('uniqueId1')
   
   }
@@ -164,7 +173,10 @@ toast;
       
       console.log('view load','chats page')
       
-      
+      this.content.ionScrollEnd.subscribe((data)=>{
+        //this.scrollbottom = true;
+        console.log('scroll',data)
+      });
   }
 
   ionViewWillLeave(){
@@ -176,15 +188,25 @@ toast;
       });
   }
 
-  onViewWillEnter(): void {
+  onViewDidEnter() {
     
-    this.content.scrollToBottom(0)
+    setTimeout(() => {
+      this.content.scrollToBottom(300);//300ms animation speed
+    });
+
 }
 
-scrollToBottom() {
+scrollTo() {
   setTimeout(() => {
-      this.content.scrollToBottom();
-  });
+    this.content.scrollToBottom();
+},1000);
+
+}
+
+scrollTochat() {
+  setTimeout(() => {
+    this.content.scrollToBottom();
+},10);
 
 }
 
@@ -221,6 +243,7 @@ Invite() {
 callFunction(){
   this.content.scrollToBottom(0)
 }
+
 
 }
 interface chats {
