@@ -36,7 +36,7 @@ export class ChatPage {
   //chatscol: AngularFireDatabase<>;
   chats: Observable<any[]>;
  
-
+shouldScrollDown;
 mail: string;
 scrollbottom: boolean = true;
 mailuser;
@@ -57,7 +57,6 @@ toast;
 
   constructor(public socialsharing: SocialSharing,public actionSheetCtrl: ActionSheetController,public nativeAudio: NativeAudio,public toastCtrl: ToastController,public keyboard: Keyboard,public ngZone: NgZone,public platform: Platform,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams) {
     
-
     this.nativeAudio.preloadSimple('uniqueId1','assets/sounds/FacebookPop.mp3')
       //this.user = this.navParams.get('user');
       //this.chatscol = this.db.collection('chats')
@@ -110,8 +109,8 @@ toast;
 
     this.chats.subscribe((data)=>{
      
-      if(this.scrollbottom == true){
-      this.scrollTochat();
+      if(this.shouldScrollDown == true){
+       this.scrollTochat();
       }
     })
 
@@ -121,8 +120,6 @@ toast;
     
   sendmess(){
 
-    
-    
     if (this.message.length==0){
       this.message = 'Just bored to type!'
     }
@@ -132,7 +129,7 @@ toast;
       password: this.createroompassword,
       time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
       });
-      this.keyboard.show();
+     // this.keyboard.show();
       console.log('into bot if',this.message)
       if (this.message.slice(0, 1)=='/'){
         this.botmess = this.message.slice(1)
@@ -151,11 +148,13 @@ toast;
               });
               this.message='';
            });
+           
         })
-
+        
       }
       
   this.message='';
+      
  // this.keyboard.show();
  // this.scrollTochat();
   this.nativeAudio.play('uniqueId1')
@@ -174,8 +173,23 @@ toast;
       console.log('view load','chats page')
       
       this.content.ionScrollEnd.subscribe((data)=>{
-        //this.scrollbottom = true;
-        console.log('scroll',data)
+
+        let dimensions = this.content.getContentDimensions();
+  
+        let scrollTop = this.content.scrollTop;
+        let contentHeight = dimensions.contentHeight;
+        let scrollHeight = dimensions.scrollHeight;
+  
+        if ( (scrollTop + contentHeight + 20) > scrollHeight) {
+          this.shouldScrollDown = true;
+          console.log('scroll if',this.shouldScrollDown)
+         // this.showScrollButton = false;
+        } else {
+          this.shouldScrollDown = false;
+          console.log('scroll else',this.shouldScrollDown)
+         // this.showScrollButton = true;
+        }
+  
       });
   }
 
@@ -244,7 +258,11 @@ callFunction(){
   this.content.scrollToBottom(0)
 }
 
-
+// ngAfterViewInit() {
+//   this.content.ionScrollStart.subscribe((res)=>{
+//     console.log('scroll',res.deltaY)
+//   });
+//}
 }
 interface chats {
   user: string;

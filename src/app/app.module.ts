@@ -14,6 +14,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -31,6 +32,10 @@ import { NativeAudio } from '@ionic-native/native-audio';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { Push } from '@ionic-native/push'
+import { AddzonePage } from '../pages/addzone/addzone'
+import { AppfeedbackPage } from '../pages/appfeedback/appfeedback'
+import { AboutPage } from '../pages/about/about'
+import { CallNumber } from '@ionic-native/call-number';
 
 
 
@@ -53,7 +58,10 @@ const firebaseAuth = {
     ChatjoinPage,
     IntroPage,
     AffiliatePage,
-    ChatroomdeletePage
+    ChatroomdeletePage,
+    AboutPage,
+    AddzonePage,
+    AppfeedbackPage
   ],
   imports: [
     BrowserModule,
@@ -77,7 +85,10 @@ const firebaseAuth = {
     ChatjoinPage,
     IntroPage,
     AffiliatePage,
-    ChatroomdeletePage
+    ChatroomdeletePage,
+    AboutPage,
+    AddzonePage,
+    AppfeedbackPage
   ],
   providers: [
     StatusBar,
@@ -88,6 +99,8 @@ const firebaseAuth = {
     NativeAudio,
     SocialSharing,
     Push,
+    CallNumber,
+    EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

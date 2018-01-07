@@ -1,3 +1,28 @@
 page-addzone {
+.ad{
+    display:flex;
+    flex-direction: row;
+}
 
+.phonebtn{
+    flex: 1;
+}
+.mailbtn{
+    flex: 1;
+}
+.sitebtn{
+    flex: 1;
+}
+
+.adzonephone{
+    width: 100px;
+}
+
+.adzonemail{
+    width: 100px;
+}
+
+.adzonesite{
+    width: 100px;
+}
 }

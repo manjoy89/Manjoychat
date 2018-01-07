@@ -78,6 +78,7 @@
     </platform>
     <allow-navigation href="http://192.168.1.105:8101" />
     <engine name="android" spec="6.3.0" />
+    <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="313705575807560" />
         <variable name="APP_NAME" value="ManjoyChat" />
@@ -95,8 +96,9 @@
     <plugin name="cordova-plugin-vibration" spec="^3.0.1" />
     <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
-    <engine name="ios" spec="~4.5.4" />
     <plugin name="phonegap-plugin-push" spec="^2.1.2">
         <variable name="SENDER_ID" value="312081840612" />
     </plugin>
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="cordova-plugin-email-composer" spec="^0.8.11" />
 </widget>

@@ -12,6 +12,9 @@ import { ChatjoinPage} from '../pages/chatjoin/chatjoin'
 import { ChatselectPage} from '../pages/chatselect/chatselect'
 import { AffiliatePage } from '../pages/affiliate/affiliate';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { AddzonePage } from '../pages/addzone/addzone';
+import { AppfeedbackPage } from '../pages/appfeedback/appfeedback';
+import { AboutPage } from '../pages/about/about';
 @Component({
   templateUrl: 'app.html',
   providers: [Keyboard]
@@ -35,7 +38,10 @@ pages: Array<{title: string, component: any}>;
 
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Affiliate', component: AffiliatePage }
+      { title: 'Affiliate Market', component: AffiliatePage },
+      { title: 'Ad Zone', component: AddzonePage },
+      { title: 'App Feedback', component: AppfeedbackPage },
+      { title: 'About', component: AboutPage }
     //  { title: 'Join Room', component: ChatjoinPage }
     ];
 

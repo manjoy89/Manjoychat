@@ -35,7 +35,7 @@
 
 <ion-footer>
    <div id="footer">
-   <div class="elem"><ion-textarea type="text" [(ngModel)]="message" (keypress)="eventHandler($event.keyCode)"></ion-textarea></div>
+   <div class="elem"><ion-textarea type="text" [(ngModel)]="message" ></ion-textarea></div>
    <div class="elem"><button (mousedown)="preventFocusChange($event)" ion-fab (click)="sendmess()"><ion-icon name="send" ></ion-icon></button></div>
   </div>
 </ion-footer>

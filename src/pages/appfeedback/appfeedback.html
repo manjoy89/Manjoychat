@@ -6,13 +6,34 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>appfeedback</ion-title>
-  </ion-navbar>
+    <ion-navbar color="mycolor">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>App Feedback</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+   
 
+       <div>
+          <ion-input type="text" placeholder="You nice name here!" [(ngModel)]="name"></ion-input>
+       </div>   
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div>
+          <ion-input class="text-wrap" type="text" placeholder="Your message goes here!" [(ngModel)]="message"></ion-input>
+        </div>
+        <div align="center">
+          <button class="feedbackbtn" ion-button outline color="light" (click)="submit()">Submit</button>
+        </div>
+      
 </ion-content>
